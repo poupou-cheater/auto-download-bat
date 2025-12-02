@@ -1,8 +1,12 @@
 @echo off
 Title Installation Auto - Logiciels & Ressources
 
-:: Définition du chemin du dossier Téléchargements
+:: =======================================================
+:: CONFIGURATION
+:: =======================================================
+:: Definit le chemin du sous-dossier de telechargement
 set "DOWNLOADS_DIR=%USERPROFILE%\Downloads"
+set "DEST_DIR=%DOWNLOADS_DIR%\AutoInstall_Files"
 
 echo =======================================================
 echo 1. Installation des Outils de Developpement (ajoute au PATH)
@@ -32,12 +36,17 @@ winget install --id 1Password.1Password --source winget --accept-package-agreeme
 winget install --id WhatsApp.WhatsApp --source winget --accept-package-agreements --accept-source-agreements
 winget install --id 7zip.7zip --source winget --accept-package-agreements --accept-source-agreements
 
+:: Utilitaires Windows
+winget install --id TranslucentTB.TranslucentTB --source winget --accept-package-agreements --accept-source-agreements
+winget install --id EarTrumpet.EarTrumpet --source winget --accept-package-agreements --accept-source-agreements
+
 :: Gaming & Streaming
 winget install --id Steam.Steam --source winget --accept-package-agreements --accept-source-agreements
 winget install --id RiotGames.RiotClient --source winget --accept-package-agreements --accept-source-agreements
 winget install --id OBSStudio.OBSStudio --source winget --accept-package-agreements --accept-source-agreements
+winget install --id SteelSeries.GG --source winget --accept-package-agreements --accept-source-agreements
 
-:: Logiciels Specifiques (a verifier pour Prism Launcher et Iriun)
+:: Logiciels Specifiques (Prism Launcher et Iriun)
 winget install --id PrismLauncher.PrismLauncher --source winget --accept-package-agreements --accept-source-agreements
 winget install --id Iriun.Iriun --source winget --accept-package-agreements --accept-source-agreements
 
@@ -46,9 +55,8 @@ echo =======================================================
 echo 3. Telechargement des Fichiers Specifiques
 echo =======================================================
 
-:: Création d'un sous-dossier dans Téléchargements pour le nettoyage
-mkdir "%DOWNLOADS_DIR%\AutoInstall_Files"
-set "DEST_DIR=%DOWNLOADS_DIR%\AutoInstall_Files"
+:: Creation du sous-dossier de telechargement
+mkdir "%DEST_DIR%"
 
 :: Telechargement de BorderlessMinecraft.exe (vous devrez l'executer manuellement)
 echo Telechargement de BorderlessMinecraft.exe...
